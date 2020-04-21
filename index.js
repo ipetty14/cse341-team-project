@@ -3,8 +3,7 @@
  * They're for information purposes only.
  * 
  * This layout is provided to you for an easy and quick setup to either pull
- * or correct yours off of after working at least 1 hour on Team Activity 02.
- * The main purpose of the app is to 
+ * or use to correct yours after working at least 1 hour on Team Activity 02.
  * Throughout the course, we'll be using Express.js for our view engines.
  * However, feel free to use pug or handlebars ('with extension hbs'). You will
  * need to make sure you install them beforehand according to the reading from
