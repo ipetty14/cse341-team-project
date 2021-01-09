@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../includes/header.ejs %>
+  </head>
+
+  <body>
+    <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1><%= title %></h1>
+        <p>Please create a user below.</p>
+      </div>
+    </div>
+    <div class="container my-5">
+      <div class="row">
+        <form action="/prove01/create-user" method="POST">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="shortBio" class="form-label">Short Bio</label>
+            <input
+              type="text"
+              class="form-control"
+              id="shortBio"
+              name="shortBio"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
