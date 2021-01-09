@@ -1,17 +1,47 @@
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li><a href="/" style="padding: 0 2rem; margin: 0"><img class="logo" src="images/BYUI-logo.png" alt="BYU Idaho logo"></a></li>
-      <li class="<%= path === '/' ? 'active' : ''%>">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+<nav class="navbar navbar-default navbar-static-top navbar-inverse bg-dark">
+  <div class="container mb-3 mt-3">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
       </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Team Activities <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="<%= path === '/ta01' ? 'active' : ''%>"><a href="/ta01">TA01</a></li>
-            <li class="<%= path === '/ta03' ? 'active' : ''%>"><a href="/ta03">TA03</a></li>
-            <li class="<%= path === '/ta04' ? 'active' : ''%>"><a href="/ta04">TA04</a></li>
-          </ul>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          data-bs-toggle="dropdown"
+          href="#"
+          role="button"
+          aria-expanded="false"
+          >Team Activities</a
+        >
+        <ul class="dropdown-menu">
+          <li class="<%= path === '/ta01' ? 'active' : ''%>">
+            <a class="dropdown-item" href="/ta01">TA01</a>
+          </li>
+          <li class="<%= path === '/ta02' ? 'active' : ''%>">
+            <a class="dropdown-item" href="/ta02">TA02</a>
+          </li>
+          <li class="<%= path === '/ta03' ? 'active' : ''%>">
+            <a class="dropdown-item" href="/ta03">TA03</a>
+          </li>
+          <li class="<%= path === '/ta04' ? 'active' : ''%>">
+            <a class="dropdown-item" href="/ta04">TA04</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          data-bs-toggle="dropdown"
+          href="#"
+          role="button"
+          aria-expanded="false"
+          >Prove Assignments</a
+        >
+        <ul class="dropdown-menu">
+          <li class="<%= path === '/prove01' ? '' : ''%>">
+            <a class="dropdown-item" href="/prove01">Prove 01</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
