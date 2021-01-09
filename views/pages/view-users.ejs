@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../includes/header.ejs %>
+  </head>
+
+  <body>
+    <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1><%= title %></h1>
+        <p>View the users created in the session here!</p>
+      </div>
+    </div>
+    <div class="container my-5">
+      <% if (users.length > 0) { %>
+      <div class="row">
+        <h2>Users</h2>
+      </div>
+      <div class="row">
+        <% for (let user of users) { %>
+        <div class="card mx-3 shadow rounded" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= user.firstName %> <%= user.lastName %>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text text-secondary"><%= user.shortBio %></p>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h2>No Products Found!</h2>
+      <% } %>
+    </div>
+  </body>
+</html>
