@@ -15,7 +15,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/create-user', (req, res, next) => {
-  console.log(req.body);
   users.push({
     firstName: req.body.firstName,
     lastName: req.body.lastName,

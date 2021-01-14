@@ -14,6 +14,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const methodOverride = require('method-override');
 const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
 
 const app = express();
@@ -41,6 +42,7 @@ app
   //.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs'})) // For handlebars
   //.set('view engine', 'hbs')
   .use(express.urlencoded({ extended: false })) // For parsing the body of a POST
+  .use(methodOverride('_method'))
   .use('/ta01', ta01Routes)
   .use('/ta02', ta02Routes)
   .use('/ta03', ta03Routes)
