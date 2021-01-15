@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../includes/header.ejs %>
+  </head>
+
+  <body>
+    <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1><%= title %></h1>
+        <p>View library and add to collection.</p>
+      </div>
+    </div>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-7">
+          <% if (books !== undefined && books.length > 0) { %>
+          <div class="row mx-1">
+            <h2>Library</h2>
+          </div>
+          <div class="row mx-1">
+            <% for (let book of books) { %> <%-include("../partials/card",
+            {title: book.title, subtitle: book.author, content: book.summary,
+            secondaryContent: `ISBN: ${book.isbn}`}) %> <% } %>
+          </div>
+          <% } else { %>
+          <h2>No Books Found!</h2>
+          <% } %>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4">
+          <h3>Add a Book</h3>
+          <% include ../partials/create-book-form.ejs %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
