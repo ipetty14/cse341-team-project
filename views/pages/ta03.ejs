@@ -1,21 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ../includes/header.ejs %>
-</head>
+  <head>
+    <% include ../includes/header.ejs %> <% include ../includes/tailwind.ejs %>
+  </head>
 
-<body>
-  <% include ../includes/nav.ejs %>
-<div class="jumbotron text-center">
-  <div class="container">
-    <h1><%= title %></h1>
-    <p>This is the placeholder for Team Activity 03</p>
-  </div>
-</div>
-<div class="container">
-  
-</div>
-
-
-</body>
+  <body>
+    <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1 class="text-5xl"><%= title %></h1>
+        <p>This is the placeholder for Team Activity 03</p>
+      </div>
+    </div>
+    <section class="py-12">
+      <div class="container mx-auto">
+        <div class="flex justify-between">
+          <h1 class="text-2xl font-black text-gray-900 pb-6 px-6 md:px-12">
+            Items
+          </h1>
+          <div class="relative text-gray-600">
+            <form action="/ta03/filter" method="GET">
+              <input
+                type="search"
+                name="search"
+                placeholder="Search"
+                class="bg-gray-100 h-10 pl-3 pr-10 rounded-full text-sm focus:outline-none"
+              />
+              <button type="submit" class="absolute right-0 top-0 mt-2 mr-4">
+                <svg
+                  class="h-4 w-4 fill-current mt-1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  version="1.1"
+                  id="Capa_1"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 56.966 56.966"
+                  style="enable-background: new 0 0 56.966 56.966"
+                  xml:space="preserve"
+                  width="512px"
+                  height="512px"
+                >
+                  <path
+                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="flex flex-wrap px-6">
+          <% items.forEach(item => { %>
+          <div
+            class="w-full lg:w-1/5 md:px-1 lg:px-2 py-1 m-3 shadow-md hover:shadow-xl"
+          >
+            <div class="bg-white">
+              <img
+                src="<%= item.imageUrl %>"
+                alt=""
+                class="h-56 w-full hover:opacity-50"
+              />
+              <div class="px-4 py-4 md:px-10">
+                <h1 class="font-bold text-lg"><%= item.name %></h1>
+                <p class="py-4"><%= item.description %></p>
+                <p class="py-4">
+                  Tags:
+                  <b
+                    ><% item.tags.forEach(tag => { %> <%= tag %><% if
+                    (item.tags[item.tags.length-1] !== tag) { %>, <% } %> <% })
+                    %></b
+                  >
+                </p>
+                <div class="flex flex-wrap pt-8">
+                  <div class="w-full text-sm font-medium">
+                    Price: $<%= item.price %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
