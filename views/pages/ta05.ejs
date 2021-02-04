@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../includes/header.ejs %> <% include ../includes/tailwind.ejs
+    %><% if (style == 'dark') {%>
+    <style>
+      body,
+      .jumbotron {
+        background: indigo;
+      }
+      h4 {
+        color: #fff;
+      }
+      .btn-theme {
+        background-color: white;
+        border-color: rgb(0, 180, 230);
+        color: black;
+        font-size: 11px;
+        letter-spacing: 0.2px;
+        padding: 6px 20px;
+      }
+      .btn-theme:hover {
+        background-color: rgb(3, 157, 200);
+        border-color: rgb(3, 157, 200);
+        color: #fff;
+      }
+      .btn-danger {
+        background-color: white;
+        border-color: rgb(254, 51, 92);
+        color: rgb(254, 51, 92);
+      }
+      .btn-danger:hover {
+        background-color: rgb(196, 1, 40);
+        border-color: rgb(196, 1, 40);
+      }
+    </style>
+    <% } else if (style == 'light') { %>
+    <style>
+      body,
+      .jumbotron {
+        background: #e9e9e9;
+      }
+      h1,
+      p,
+      h4 {
+        color: black !important;
+      }
+      .btn-theme {
+        background-color: white;
+        border-color: rgb(0, 180, 230);
+        color: rgb(0, 180, 230);
+        font-size: 11px;
+        letter-spacing: 0.2px;
+        padding: 6px 20px;
+      }
+      .btn-theme:hover {
+        background-color: rgb(3, 157, 200);
+        border-color: rgb(3, 157, 200);
+        color: #fff;
+      }
+    </style>
+    <% } else { %>
+    <style>
+      .btn-theme {
+        font-size: 11px;
+        letter-spacing: 0.2px;
+        padding: 6px 20px;
+      }
+    </style>
+    <% } %>
+  </head>
+
+  <body>
+    <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1 class="text-6xl"><%= title %></h1>
+        <p>Sessions using Express.</p>
+      </div>
+    </div>
+    <div class="flex flex-column mx-12 my-8">
+      <div class="container">
+        <form action="/ta05/change-style" method="POST">
+          <h4 class="font-bold mb-1">Choose Your Theme</h4>
+          <div class="row align-items-center">
+            <div class="col-3">
+              <select
+                class="form-select"
+                style="padding-top: 7px; padding-bottom: 7px"
+                id="themeStyle"
+                name="themeStyle"
+              >
+                <option style="font-style: italic" value="" selected disabled>
+                  Current Theme: <%= style.charAt(0).toUpperCase() +
+                  style.slice(1) %> (Change Here)
+                </option>
+                <option value="default">Default Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="light">Light Theme</option>
+              </select>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary btn-theme" type="submit">
+                Change Theme
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br />
+      <div class="container">
+        <div class="row">
+          <div class="col-1">
+            <form action="/ta05/counter" method="POST">
+              <input type="hidden" name="count" value="1" />
+              <button
+                class="btn btn-primary btn-theme"
+                style="width: 100%"
+                type="submit"
+              >
+                Plus 1
+              </button>
+            </form>
+          </div>
+          <% if (counter == null) { %> <% } else { %>
+          <div class="col-1" style="text-align: center; align-items: center">
+            <h4><%= counter %></h4>
+          </div>
+          <% } %>
+          <div class="col-1">
+            <form action="/ta05/counter" method="POST">
+              <input type="hidden" name="count" value="-1" />
+              <button
+                class="btn btn-primary btn-theme"
+                style="width: 100%"
+                type="submit"
+              >
+                Minus 1
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <form action="/ta05/destroy-session" method="POST">
+              <input type="hidden" name="destroy" value="1" />
+              <button class="btn btn-danger" style="width: 100%" type="submit">
+                Destroy Session!
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

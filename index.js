@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const methodOverride = require('method-override');
 const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
-
+const session = require('express-session');
 const app = express();
 
 // Route setup. You can implement more in the future!
@@ -25,6 +25,7 @@ const ta01Routes = require('./routes/ta01');
 const ta02Routes = require('./routes/ta02');
 const ta03Routes = require('./routes/ta03');
 const ta04Routes = require('./routes/ta04');
+const ta05Routes = require('./routes/ta05');
 
 // Prove Assignment Routes
 const prove01Routes = require('./routes/prove01');
@@ -32,6 +33,14 @@ const prove02Routes = require('./routes/prove02');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
+app.use(
+  session({
+    secret: 'test',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app
   .use(express.static(path.join(__dirname, 'public')))
@@ -48,6 +57,7 @@ app
   .use('/ta02', ta02Routes)
   .use('/ta03', ta03Routes)
   .use('/ta04', ta04Routes)
+  .use('/ta05', ta05Routes)
   .use('/prove01', prove01Routes)
   .use('/prove02', prove02Routes)
   .get('/', (req, res, next) => {
